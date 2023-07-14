@@ -44,15 +44,15 @@ def main():
     home_path = Path.home()
 
     # Build the full path to the subdirectory within the user's home folder
-    subdirectory_path = home_path / subdirectory_name
+    templates_directory = home_path / subdirectory_name
 
     # Check if the subdirectory exists
-    if not subdirectory_path.exists() or not subdirectory_path.is_dir():
+    if not templates_directory.exists() or not templates_directory.is_dir():
         print(f'The subdirectory "{subdirectory_name}" does not exist in the user\'s home folder.')
         return
 
     # List all files in the subdirectory
-    template_files = os.listdir(subdirectory_path)
+    template_files = os.listdir(templates_directory)
 
     # Check if there are any template files
     if not template_files:
@@ -87,6 +87,7 @@ def main():
 
             # Call the function to replace the words in the text
             prompt = replace_words(text)
+
             print(f'\n{Fore.GREEN}Prompt:{Style.RESET_ALL}')
 
             print(prompt)
